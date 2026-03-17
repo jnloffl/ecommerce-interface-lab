@@ -1,0 +1,253 @@
+/* Lab 3 Task 4: Hero Section Flexbox */
+/* Lab 3 Task 7: Animation */
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+main > section:first-of-type {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    margin-bottom: 4rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main > section:first-of-type h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+main > section:first-of-type p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main > section:first-of-type button {
+    background-color: white;
+    color: #667eea;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+main > section:first-of-type button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+section h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 3px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.products-grid article {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.products-grid article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.products-grid article h3 {
+    font-size: 1.25rem;
+    color: #333;
+    margin: 1rem 0 0.5rem;
+}
+
+.products-grid article img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.products-grid article p {
+    color: #666;
+    line-height: 1.5;
+    margin: 0.25rem 0;
+}
+
+.products-grid article p:first-of-type {
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.products-grid article p:nth-of-type(2) {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #667eea;
+    margin: 1rem 0;
+}
+
+.products-grid article button {
+    background-color: #667eea;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    margin-top: auto;
+}
+
+.products-grid article button:hover {
+    background-color: #5a67d8;
+}
+
+section:last-of-type .products-grid {
+    margin-bottom: 0;
+}
+
+.products-grid article del {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.products-grid article strong {
+    color: #e53e3e;
+    font-size: 1.1rem;
+}
+
+.products-grid article em {
+    color: #38a169;
+    font-style: normal;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+.products-grid article p:has(del) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+    
+    main > section:first-of-type {
+        padding: 3rem 1rem;
+    }
+    
+    main > section:first-of-type h1 {
+        font-size: 2rem;
+    }
+    
+    main > section:first-of-type p {
+        font-size: 1rem;
+    }
+    
+    section h2 {
+        font-size: 1.75rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    main > section:first-of-type {
+        padding: 2rem 1rem;
+    }
+    
+    main > section:first-of-type h1 {
+        font-size: 1.5rem;
+    }
+    
+    main > section:first-of-type button {
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        width: 100%;
+    }
+    
+    section h2 {
+        font-size: 1.5rem;
+    }
+    
+    section h2::after {
+        width: 40px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .products-grid article p:has(del) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.products-grid article {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.products-grid article:nth-child(1) { animation-delay: 0.1s; }
+.products-grid article:nth-child(2) { animation-delay: 0.2s; }
+.products-grid article:nth-child(3) { animation-delay: 0.3s; }

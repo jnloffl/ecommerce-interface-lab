@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2: Product Listing View</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/products.css">
+    <link rel="stylesheet" href="style/breadcrumb.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <h1>Shopify</h1>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="landing.html">Home</a></li>
+          <li><a href="products.html" class="active">Shop</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="icon-container">
+        <a href="cart.html" class="icon-link" aria-label="Shopping Cart">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+            />
+          </svg>
+        </a>
+
+        <a href="account.html" class="icon-link" aria-label="User Account">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Lab 1 Task 2: Product layout with main and aside -->
+    <div class="product-layout">
+      <!-- Lab 1 Task 2: Aside containing filter form with checkboxes and radio buttons -->
+      <aside class="filter-sidebar">
+        <h2>Filter Products</h2>
+
+        <div class="filter-section">
+          <h3>Category</h3>
+          <form>
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="electronics"
+                name="category"
+                value="electronics"
+              />
+              <label for="electronics">Electronics</label>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="audio" name="category" value="audio" />
+              <label for="audio">Audio</label>
+            </div>
+
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="wearables"
+                name="category"
+                value="wearables"
+              />
+              <label for="wearables">Wearables</label>
+            </div>
+
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="accessories"
+                name="category"
+                value="accessories"
+              />
+              <label for="accessories">Accessories</label>
+            </div>
+          </form>
+        </div>
+
+        <div class="filter-section">
+          <h3>Price Range</h3>
+          <form>
+            <div class="radio-group">
+              <input
+                type="radio"
+                id="under1000"
+                name="price"
+                value="under1000"
+              />
+              <label for="under1000">Under ₱1,000</label>
+            </div>
+
+            <div class="radio-group">
+              <input
+                type="radio"
+                id="1000to3000"
+                name="price"
+                value="1000to3000"
+              />
+              <label for="1000to3000">₱1,000 - ₱3,000</label>
+            </div>
+
+            <div class="radio-group">
+              <input
+                type="radio"
+                id="3000to5000"
+                name="price"
+                value="3000to5000"
+              />
+              <label for="3000to5000">₱3,000 - ₱5,000</label>
+            </div>
+
+            <div class="radio-group">
+              <input type="radio" id="over5000" name="price" value="over5000" />
+              <label for="over5000">Over ₱5,000</label>
+            </div>
+          </form>
+        </div>
+
+        <div class="filter-section">
+          <h3>Brand</h3>
+          <form>
+            <div class="checkbox-group">
+              <input type="checkbox" id="sony" name="brand" value="sony" />
+              <label for="sony">Sony</label>
+            </div>
+
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="samsung"
+                name="brand"
+                value="samsung"
+              />
+              <label for="samsung">Samsung</label>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="apple" name="brand" value="apple" />
+              <label for="apple">Apple</label>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="jbl" name="brand" value="jbl" />
+              <label for="jbl">JBL</label>
+            </div>
+          </form>
+        </div>
+
+        <button type="submit" class="apply-filters">Apply Filters</button>
+      </aside>
+
+      <!-- Lab 1 Task 2: Main section containing product grid -->
+      <main class="product-grid">
+        <h1>All Products</h1>
+
+        <div class="products-container">
+          <!-- Lab 1 Task 2: Each product inside an article with image, price, and View Details link -->
+          <article class="product-card">
+            <img
+              src="images/smartwatch.jpg"
+              alt="Smart Watch Pro with fitness tracking features"
+              class="product-image"
+            />
+            <h2 class="product-title">Smart Watch Pro</h2>
+            <p class="product-price">₱3,999</p>
+            <p class="product-description">
+              Track your fitness, heart rate, and receive notifications
+            </p>
+            <a href="detail.html?id=1" class="view-details">View Details →</a>
+          </article>
+
+          <article class="product-card">
+            <img
+              src="images/headphones.jpg"
+              alt="Wireless noise-cancelling headphones"
+              class="product-image"
+            />
+            <h2 class="product-title">Wireless Headphones</h2>
+            <p class="product-price">₱2,499</p>
+            <p class="product-description">
+              High-quality sound with noise cancellation and 20hr battery life
+            </p>
+            <a href="detail.html?id=2" class="view-details">View Details →</a>
+          </article>
+
+          <article class="product-card">
+            <img
+              src="images/speaker.jpg"
+              alt="Portable Bluetooth speaker"
+              class="product-image"
+            />
+            <h2 class="product-title">Bluetooth Speaker</h2>
+            <p class="product-price">₱1,899</p>
+            <p class="product-description">
+              Portable speaker with deep bass and waterproof design
+            </p>
+            <a href="detail.html?id=3" class="view-details">View Details →</a>
+          </article>
+
+          <article class="product-card">
+            <img
+              src="images/keyboard.jpg"
+              alt="RGB backlit mechanical keyboard"
+              class="product-image"
+            />
+            <h2 class="product-title">Mechanical Keyboard</h2>
+            <p class="product-price">₱2,999</p>
+            <p class="product-description">
+              RGB backlit with blue switches for satisfying typing experience
+            </p>
+            <a href="detail.html?id=4" class="view-details">View Details →</a>
+          </article>
+
+          <article class="product-card">
+            <img
+              src="images/mouse.jpg"
+              alt="High precision gaming mouse"
+              class="product-image"
+            />
+            <h2 class="product-title">Gaming Mouse</h2>
+            <p class="product-price">₱1,899</p>
+            <p class="product-description">
+              16,000 DPI with customizable RGB lighting and 6 programmable buttons
+            </p>
+            <a href="detail.html?id=5" class="view-details">View Details →</a>
+          </article>
+
+          <article class="product-card">
+            <img
+              src="images/monitor.jpg"
+              alt="15-inch portable USB-C monitor"
+              class="product-image"
+            />
+            <h2 class="product-title">15" Portable Monitor</h2>
+            <p class="product-price">₱5,999</p>
+            <p class="product-description">
+              USB-C powered, lightweight, perfect for laptop dual-screen setup
+            </p>
+            <a href="detail.html?id=6" class="view-details">View Details →</a>
+          </article>
+        </div>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 My Online Store. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 6: User Management - Account</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/account.css">
+    <link rel="stylesheet" href="style/breadcrumb.css">
+  </head>
+  <body>
+    <!-- Lab 1 Task 6: Header with user name and account navigation -->
+    <header>
+      <div class="logo">
+        <h1>Shopify</h1>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="landing.html">Home</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="icon-container">
+        <a href="cart.html" class="icon-link" aria-label="Shopping Cart">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+            />
+          </svg>
+        </a>
+
+        <a href="account.html" class="icon-link" aria-label="User Account">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Lab 1 Task 6: Header showing user's name -->
+      <header>
+        <h1>Welcome back, John Doe!</h1>
+        
+        <!-- Lab 1 Task 6: Account-specific navigation links -->
+        <nav>
+          <ul>
+            <li><a href="#order-history">Order History</a></li>
+            <li><a href="#profile-settings">Profile Settings</a></li>
+            <li><a href="#wishlist">Wishlist</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Lab 1 Task 6: Order History section with details/summary tags -->
+      <section id="order-history">
+        <h2>Order History</h2>
+        
+        <details>
+          <summary>
+            <strong>Order #ORD-001</strong> - March 10, 2026 - <strong>₱10,896</strong> - <span style="color: green;">Delivered</span>
+          </summary>
+          <div>
+            <h4>Items:</h4>
+            <ul>
+              <li>Smart Watch Pro x1 - ₱3,999</li>
+              <li>Wireless Headphones x2 - ₱4,998</li>
+              <li>Bluetooth Speaker x1 - ₱1,899</li>
+            </ul>
+            <p><strong>Shipping Address:</strong> 123 Main St, Manila</p>
+            <p><strong>Payment:</strong> Credit Card</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <strong>Order #ORD-002</strong> - February 25, 2026 - <strong>₱4,898</strong> - <span style="color: green;">Delivered</span>
+          </summary>
+          <div>
+            <h4>Items:</h4>
+            <ul>
+              <li>Mechanical Keyboard x1 - ₱2,999</li>
+              <li>Gaming Mouse x1 - ₱1,899</li>
+            </ul>
+            <p><strong>Shipping Address:</strong> 123 Main St, Manila</p>
+            <p><strong>Payment:</strong> PayPal</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <strong>Order #ORD-003</strong> - March 12, 2026 - <strong>₱5,999</strong> - <span style="color: blue;">In Transit</span>
+          </summary>
+          <div>
+            <h4>Items:</h4>
+            <ul>
+              <li>15" Portable Monitor x1 - ₱5,999</li>
+            </ul>
+            <p><strong>Shipping Address:</strong> 123 Main St, Manila</p>
+            <p><strong>Payment:</strong> GCash</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Lab 1 Task 6: Alternative using Description List (DL) -->
+      <section>
+        <h2>Monthly Summary</h2>
+        <dl>
+          <dt>March 2026</dt>
+          <dd>3 orders - ₱17,793</dd>
+          
+          <dt>February 2026</dt>
+          <dd>2 orders - ₱9,797</dd>
+          
+          <dt>January 2026</dt>
+          <dd>1 order - ₱3,999</dd>
+        </dl>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 My Online Store. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

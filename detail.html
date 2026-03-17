@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3: Product Detail View</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/detail.css">
+    <link rel="stylesheet" href="style/breadcrumb.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <h1>Shopify</h1>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="landing.html">Home</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="icon-container">
+        <a href="cart.html" class="icon-link" aria-label="Shopping Cart">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+            />
+          </svg>
+        </a>
+
+        <a href="account.html" class="icon-link" aria-label="User Account">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="landing.html">Home</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li>Smart Watch Pro</li>
+        </ol>
+      </nav>
+
+      <div class="product-detail">
+        <div class="product-overview">
+          <div class="product-image-large">
+            <img
+              src="images/smartwatch.jpg"
+              alt="Smart Watch Pro"
+              class="main-image"
+            />
+          </div>
+
+          <div class="product-info">
+            <h1>Smart Watch Pro</h1>
+            <p class="product-price">₱3,999</p>
+            <p class="product-availability">In Stock</p>
+            <p class="product-description">
+              Track your fitness, heart rate, and receive notifications with
+              this premium smart watch. Features include heart rate monitoring,
+              sleep tracking, GPS, and 7-day battery life.
+            </p>
+
+            <!-- Lab 1 Task 3: Form to select quantity and Add to Cart -->
+            <form class="add-to-cart-form">
+              <div class="quantity-selector">
+                <label for="quantity">Quantity:</label>
+                <select id="quantity" name="quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+
+              <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Lab 1 Task 3: Table for technical specifications -->
+        <section class="specifications">
+          <h2>Technical Specifications</h2>
+
+          <table class="specs-table">
+            <caption>
+              Smart Watch Pro - Detailed Specifications
+            </caption>
+            <tbody>
+              <tr>
+                <th scope="row">Display</th>
+                <td>1.4" AMOLED, 454 x 454 pixels, Always-on display</td>
+              </tr>
+              <tr>
+                <th scope="row">Processor</th>
+                <td>Dual-core 1.2 GHz</td>
+              </tr>
+              <tr>
+                <th scope="row">Memory</th>
+                <td>1GB RAM, 8GB internal storage</td>
+              </tr>
+              <tr>
+                <th scope="row">Battery</th>
+                <td>
+                  450mAh, up to 7 days typical use, 14 days power-saving mode
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Water Resistance</th>
+                <td>5 ATM (swim-proof)</td>
+              </tr>
+              <tr>
+                <th scope="row">Sensors</th>
+                <td>Heart rate, accelerometer, gyroscope, barometer, SpO2</td>
+              </tr>
+              <tr>
+                <th scope="row">Connectivity</th>
+                <td>Bluetooth 5.0, GPS, Wi-Fi</td>
+              </tr>
+              <tr>
+                <th scope="row">Compatibility</th>
+                <td>Android 8.0+, iOS 13.0+</td>
+              </tr>
+              <tr>
+                <th scope="row">Dimensions</th>
+                <td>46mm x 46mm x 11mm, weight: 52g</td>
+              </tr>
+              <tr>
+                <th scope="row">In the Box</th>
+                <td>Smart Watch, magnetic charging cable, user manual</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Lab 1 Task 3: Section for user reviews using blockquote and article -->
+        <section class="reviews">
+          <h2>Customer Reviews</h2>
+
+          <article class="review-card">
+            <header class="review-header">
+              <h3 class="reviewer-name">John D.</h3>
+              <div class="review-rating">⭐⭐⭐⭐⭐</div>
+              <p class="review-date">Posted on March 10, 2026</p>
+            </header>
+            <blockquote class="review-content">
+              "This smart watch exceeded my expectations! The battery life is
+              amazing - I've been using it for 5 days and still have 40% left.
+              The fitness tracking is accurate and the display is bright and
+              easy to read even in direct sunlight. Highly recommended!"
+            </blockquote>
+          </article>
+
+          <article class="review-card">
+            <header class="review-header">
+              <h3 class="reviewer-name">Maria S.</h3>
+              <div class="review-rating">⭐⭐⭐⭐</div>
+              <p class="review-date">Posted on March 5, 2026</p>
+            </header>
+            <blockquote class="review-content">
+              "Great watch for the price. The heart rate monitor seems accurate
+              compared to my chest strap. The only downside is that the sleep
+              tracking could be more detailed. Otherwise, very satisfied with my
+              purchase."
+            </blockquote>
+          </article>
+
+          <article class="review-card">
+            <header class="review-header">
+              <h3 class="reviewer-name">Robert C.</h3>
+              <div class="review-rating">⭐⭐⭐⭐⭐</div>
+              <p class="review-date">Posted on February 28, 2026</p>
+            </header>
+            <p class="review-content">
+              "I've tried several smart watches and this one is by far the best.
+              The GPS is accurate, the notifications work seamlessly with my
+              phone, and the build quality feels premium. The included watch
+              bands are comfortable for all-day wear. Worth every peso!"
+            </p>
+          </article>
+
+          <article class="review-card">
+            <header class="review-header">
+              <h3 class="reviewer-name">Jennifer L.</h3>
+              <div class="review-rating">⭐⭐⭐⭐</div>
+              <p class="review-date">Posted on February 20, 2026</p>
+            </header>
+            <blockquote class="review-content">
+              "Good watch for everyday use. The fitness tracking features are
+              comprehensive and the companion app is user-friendly. Battery life
+              is decent - I charge it twice a week. Would recommend to friends."
+              <footer>- Verified Purchase</footer>
+            </blockquote>
+          </article>
+        </section>
+
+        <section class="related-products">
+          <h2>You May Also Like</h2>
+          <div class="related-grid">
+            <article class="related-item">
+              <img src="images/headphones.jpg" alt="Wireless Headphones" />
+              <h4>Wireless Headphones</h4>
+              <p>₱2,499</p>
+              <a href="#" class="view-link">View Details</a>
+            </article>
+            <article class="related-item">
+              <img src="images/speaker.jpg" alt="Bluetooth Speaker" />
+              <h4>Bluetooth Speaker</h4>
+              <p>₱1,899</p>
+              <a href="#" class="view-link">View Details</a>
+            </article>
+            <article class="related-item">
+              <img src="images/keyboard.jpg" alt="Mechanical Keyboard" />
+              <h4>Mechanical Keyboard</h4>
+              <p>₱2,999</p>
+              <a href="#" class="view-link">View Details</a>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 My Online Store. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

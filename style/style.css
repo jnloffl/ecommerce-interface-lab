@@ -1,0 +1,164 @@
+/* Lab 2 Task 1: CSS Variables */
+:root {
+    --primary-color: #007bff;
+    --primary-dark: #0056b3;
+    --primary-light: #f0f7ff;
+    --accent-color: #28a745;
+    --accent-dark: #218838;
+    --danger: #ff4444;
+    --text-main: #333;
+    --text-light: #666;
+    --text-lighter: #999;
+    --bg-light: #f8f9fa;
+    --bg-white: #fff;
+    --border-color: #ddd;
+    --border-light: #eee;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Lab 2 Task 1: Typography */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-main);
+    background-color: var(--bg-white);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+/* Lab 3 Task 5: Fluid Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Lab 3 Task 2: Navigation Flexbox */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    gap: 1rem;
+}
+
+@media (min-width: 481px) {
+    header {
+        flex-direction: row;
+    }
+}
+
+.logo h1 {
+    margin: 0;
+    color: var(--primary-color);
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 481px) {
+    nav ul {
+        flex-direction: row;
+        gap: 2rem;
+    }
+}
+
+/* Lab 2 Task 2: Interactive States */
+nav a {
+    text-decoration: none;
+    color: var(--text-main);
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+nav a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.icon-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.icon-link svg {
+    width: 24px;
+    height: 24px;
+    color: var(--text-main);
+    transition: transform 0.3s ease;
+}
+
+.icon-link:hover svg {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.icon-link:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Lab 2 Task 2: Button Transitions */
+button, 
+.btn,
+.checkout-btn,
+.shop-now-btn,
+.add-to-cart-btn,
+.place-order-btn,
+.apply-filters,
+.view-link {
+    transition: all 0.3s ease;
+}
+
+button:focus,
+.btn:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--bg-light);
+    border-top: 1px solid var(--border-color);
+    margin-top: 3rem;
+}
+
+footer p {
+    margin: 0;
+    color: var(--text-light);
+}

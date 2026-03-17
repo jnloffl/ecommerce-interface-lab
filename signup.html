@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 6: User Management - Sign Up</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/signup.css">
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>Create an Account</h1>
+        
+        <!-- Lab 1 Task 6: Form with appropriate type attributes and required validation -->
+        <form>
+          <div>
+            <label for="full-name">Full Name:</label>
+            <input type="text" id="full-name" name="full-name" required>
+          </div>
+          
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          
+          <div>
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+          </div>
+          
+          <button type="submit">Sign Up</button>
+        </form>
+        
+        <p>Already have an account? <a href="account.html">Log in</a></p>
+      </section>
+    </main>
+  </body>
+</html>
