@@ -1,0 +1,141 @@
+/* Lab 2 Task 5: ::marker pseudo-element */
+/* Lab 3 Task 7: Animation */
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+main > header:first-of-type {
+    display: block;
+    padding: 0;
+    border-bottom: none;
+    margin-bottom: 2rem;
+}
+
+main > header h1 {
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+}
+
+main > header nav ul {
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+    display: flex;
+    gap: 2rem;
+}
+
+main > header nav a {
+    padding: 0.5rem 0;
+    color: #666;
+}
+
+main > header nav a:hover {
+    color: var(--primary-color);
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #444;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+}
+
+details {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    background-color: #fafafa;
+}
+
+details:hover {
+    border-color: var(--primary-color);
+}
+
+summary {
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+summary:hover {
+    background-color: var(--primary-light);
+}
+
+summary::marker {
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
+details[open] summary {
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 6px 6px 0 0;
+}
+
+details div {
+    padding: 1rem;
+}
+
+details h4 {
+    margin: 0 0 0.5rem 0;
+    color: #555;
+}
+
+details ul {
+    margin: 0 0 1rem 0;
+    padding-left: 1.5rem;
+}
+
+details li {
+    margin-bottom: 0.25rem;
+}
+
+details p {
+    margin: 0.25rem 0;
+    color: #666;
+}
+
+dl {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 1rem;
+    background-color: #fafafa;
+}
+
+dt {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 0.5rem;
+}
+
+dt:first-of-type {
+    margin-top: 0;
+}
+
+dd {
+    margin: 0 0 0.5rem 1.5rem;
+    color: #555;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: slideIn 0.5s ease-out forwards;
+}

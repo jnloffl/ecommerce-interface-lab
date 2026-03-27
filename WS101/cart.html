@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 4: The Shopping Cart</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/cart.css">
+    <link rel="stylesheet" href="style/breadcrumb.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <h1>Shopify</h1>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="landing.html">Home</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="icon-container">
+        <a href="cart.html" class="icon-link" aria-label="Shopping Cart">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+            />
+          </svg>
+        </a>
+
+        <a href="account.html" class="icon-link" aria-label="User Account">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="landing.html">Home</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li aria-current="page">Shopping Cart</li>
+        </ol>
+      </nav>
+
+      <div class="checkout-progress">
+        <ol class="progress-steps">
+          <li class="active">Cart</li>
+          <li>Checkout</li>
+          <li>Confirmation</li>
+        </ol>
+      </div>
+
+      <section class="cart-active">
+        <h2 class="visually-hidden">Cart Items</h2>
+
+        <!-- Lab 1 Task 4: Unordered list for cart items -->
+        <ul class="cart-items">
+          <!-- Lab 1 Task 4: Cart item with img, h3, price -->
+          <li class="cart-item">
+            <div class="item-image">
+              <img src="images/smartwatch.jpg" alt="Smart Watch Pro" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Smart Watch Pro</h3>
+              <p class="item-price">3,999 each</p>
+            </div>
+            <!-- Lab 1 Task 4: Input type number for quantity -->
+            <div class="item-quantity">
+              <label for="quantity1" class="visually-hidden">Quantity</label>
+              <input
+                type="number"
+                id="quantity1"
+                name="quantity"
+                value="1"
+                min="1"
+                max="10"
+                class="quantity-input"
+              />
+            </div>
+            <div class="item-total">
+              <p class="item-total-price">3,999</p>
+            </div>
+            <div class="item-remove">
+              <button class="remove-btn" aria-label="Remove item">✕</button>
+            </div>
+          </li>
+
+          <li class="cart-item">
+            <div class="item-image">
+              <img src="images/headphones.jpg" alt="Wireless Headphones" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Wireless Headphones</h3>
+              <p class="item-price">2,499 each</p>
+            </div>
+            <div class="item-quantity">
+              <label for="quantity2" class="visually-hidden">Quantity</label>
+              <input
+                type="number"
+                id="quantity2"
+                name="quantity"
+                value="2"
+                min="1"
+                max="10"
+                class="quantity-input"
+              />
+            </div>
+            <div class="item-total">
+              <p class="item-total-price">4,998</p>
+            </div>
+            <div class="item-remove">
+              <button class="remove-btn" aria-label="Remove item">✕</button>
+            </div>
+          </li>
+
+          <li class="cart-item">
+            <div class="item-image">
+              <img src="images/speaker.jpg" alt="Bluetooth Speaker" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Bluetooth Speaker</h3>
+              <p class="item-price">1,899 each</p>
+            </div>
+            <div class="item-quantity">
+              <label for="quantity3" class="visually-hidden">Quantity</label>
+              <input
+                type="number"
+                id="quantity3"
+                name="quantity"
+                value="1"
+                min="1"
+                max="10"
+                class="quantity-input"
+              />
+            </div>
+            <div class="item-total">
+              <p class="item-total-price">1,899</p>
+            </div>
+            <div class="item-remove">
+              <button class="remove-btn" aria-label="Remove item">✕</button>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Lab 1 Task 4: Section for subtotal -->
+        <section class="cart-summary">
+          <div class="subtotal">
+            <h3>Subtotal</h3>
+            <p class="subtotal-amount">10,896</p>
+            <p class="shipping-note">
+              Shipping and taxes calculated at checkout
+            </p>
+          </div>
+
+          <!-- Lab 1 Task 4: Proceed to Checkout link styled as button -->
+          <div class="checkout-action">
+            <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+          </div>
+
+          <div class="payment-methods">
+            <p>We accept:</p>
+            <span class="payment-icons">💳 Visa • Mastercard • PayPal • GCash</span>
+          </div>
+        </section>
+      </section>
+
+      <!-- Lab 1 Task 4: Empty-state message (conditional style) -->
+      <section class="cart-empty" style="display: none">
+        <div class="empty-cart-message">
+          <svg
+            class="empty-cart-icon"
+            width="80"
+            height="80"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272"
+              stroke-width="1.5"
+            />
+          </svg>
+          <h2>Your cart is currently empty</h2>
+          <p>Looks like you haven't added anything to your cart yet.</p>
+          <a href="products.html" class="shop-now-btn">Shop Now</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 My Online Store. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
