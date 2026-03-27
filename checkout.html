@@ -74,410 +74,431 @@
         <ol class="progress-steps">
           <li class="completed">Cart</li>
           <li class="active">Checkout</li>
-          <li>Confirmation</li>
         </ol>
       </div>
 
-      <!-- Lab 1 Task 5: Main checkout layout with sections and aside -->
-      <div class="checkout-layout">
-        <!-- Left Column: Checkout Forms (grouped in sections) -->
-        <div class="checkout-forms">
-          <!-- Lab 1 Task 5: Section 1 - Contact Information -->
-          <section class="checkout-section">
-            <h2>Contact Information</h2>
+      <!-- Main Checkout Form - Wrapped everything inside a single form -->
+      <form class="checkout-form" id="checkoutForm">
+        <!-- Lab 1 Task 5: Main checkout layout with sections and aside -->
+        <div class="checkout-layout">
+          <!-- Left Column: Checkout Forms (grouped in sections) -->
+          <div class="checkout-forms">
+            <!-- Form Error Container -->
+            <div class="form-errors" style="display: none;"></div>
 
-            <form class="contact-form">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="email">Email Address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="you@example.com"
-                    required
-                  />
+            <!-- Lab 1 Task 5: Section 1 - Contact Information -->
+            <section class="checkout-section">
+              <h2>Contact Information</h2>
+
+              <div class="contact-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="you@example.com"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group checkbox-group">
+                    <input type="checkbox" id="newsletter" name="newsletter" />
+                    <label for="newsletter">Keep me updated on new products and offers</label>
+                  </div>
                 </div>
               </div>
+            </section>
 
-              <div class="form-row">
-                <div class="form-group checkbox-group">
-                  <input type="checkbox" id="newsletter" name="newsletter" />
-                  <label for="newsletter">Keep me updated on new products and offers</label>
-                </div>
-              </div>
-            </form>
-          </section>
+            <!-- Lab 1 Task 5: Section 2 - Shipping Address with fieldset -->
+            <section class="checkout-section">
+              <h2>Shipping Address</h2>
 
-          <!-- Lab 1 Task 5: Section 2 - Shipping Address with fieldset -->
-          <section class="checkout-section">
-            <h2>Shipping Address</h2>
+              <fieldset class="shipping-fieldset">
+                <legend class="visually-hidden">Shipping Address Details</legend>
 
-            <fieldset class="shipping-fieldset">
-              <legend class="visually-hidden">Shipping Address Details</legend>
-
-              <form class="shipping-form">
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="full-name">Full Name</label>
-                    <input
-                      type="text"
-                      id="full-name"
-                      name="full-name"
-                      placeholder="John Doe"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="street-address">Street Address</label>
-                    <input
-                      type="text"
-                      id="street-address"
-                      name="street-address"
-                      placeholder="123 Main St"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="apartment">Apartment, suite, etc. (optional)</label>
-                    <input
-                      type="text"
-                      id="apartment"
-                      name="apartment"
-                      placeholder="Apt 4B"
-                    />
-                  </div>
-                </div>
-
-                <div class="form-row form-row-three">
-                  <div class="form-group">
-                    <label for="city">City</label>
-                    <input
-                      type="text"
-                      id="city"
-                      name="city"
-                      placeholder="Manila"
-                      required
-                    />
+                <div class="shipping-form">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="full-name">Full Name *</label>
+                      <input
+                        type="text"
+                        id="full-name"
+                        name="full-name"
+                        placeholder="John Doe"
+                        required
+                      />
+                    </div>
                   </div>
 
-                  <div class="form-group">
-                    <label for="state">Province/State</label>
-                    <select id="state" name="state" required>
-                      <option value="">Select</option>
-                      <option value="metro-manila">Metro Manila</option>
-                      <option value="bulacan">Bulacan</option>
-                      <option value="cavite">Cavite</option>
-                      <option value="laguna">Laguna</option>
-                      <option value="rizal">Rizal</option>
-                      <option value="quezon">Quezon</option>
-                      <option value="other">Other</option>
-                    </select>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="street-address">Street Address *</label>
+                      <input
+                        type="text"
+                        id="street-address"
+                        name="street-address"
+                        placeholder="123 Main St"
+                        required
+                      />
+                    </div>
                   </div>
 
-                  <div class="form-group">
-                    <label for="zip-code">ZIP Code</label>
-                    <input
-                      type="text"
-                      id="zip-code"
-                      name="zip-code"
-                      placeholder="1000"
-                      required
-                    />
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="apartment">Apartment, suite, etc. (optional)</label>
+                      <input
+                        type="text"
+                        id="apartment"
+                        name="apartment"
+                        placeholder="Apt 4B"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row form-row-three">
+                    <div class="form-group">
+                      <label for="city">City *</label>
+                      <input
+                        type="text"
+                        id="city"
+                        name="city"
+                        placeholder="Manila"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="state">Province/State *</label>
+                      <select id="state" name="state" required>
+                        <option value="">Select</option>
+                        <option value="metro-manila">Metro Manila</option>
+                        <option value="bulacan">Bulacan</option>
+                        <option value="cavite">Cavite</option>
+                        <option value="laguna">Laguna</option>
+                        <option value="rizal">Rizal</option>
+                        <option value="quezon">Quezon</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="zip-code">ZIP Code *</label>
+                      <input
+                        type="text"
+                        id="zip-code"
+                        name="zip-code"
+                        placeholder="1000"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="phone">Phone Number *</label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="+63 912 345 6789"
+                        required
+                      />
+                    </div>
                   </div>
                 </div>
+              </fieldset>
+            </section>
 
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      placeholder="+63 912 345 6789"
-                      required
-                    />
-                  </div>
-                </div>
-              </form>
-            </fieldset>
-          </section>
+            <!-- Lab 1 Task 5: Section 3 - Shipping Method -->
+            <section class="checkout-section">
+              <h2>Shipping Method</h2>
 
-          <!-- Lab 1 Task 5: Section 3 - Shipping Method -->
-          <section class="checkout-section">
-            <h2>Shipping Method</h2>
-
-            <form class="shipping-method-form">
-              <div class="radio-options">
-                <div class="radio-option">
-                  <input
-                    type="radio"
-                    id="standard"
-                    name="shipping"
-                    value="standard"
-                    checked
-                  />
-                  <label for="standard">
-                    <span class="radio-label-main">Standard Shipping</span>
-                    <span class="radio-label-sub">3-5 business days</span>
-                  </label>
-                  <span class="radio-price">₱150</span>
-                </div>
-
-                <div class="radio-option">
-                  <input
-                    type="radio"
-                    id="express"
-                    name="shipping"
-                    value="express"
-                  />
-                  <label for="express">
-                    <span class="radio-label-main">Express Shipping</span>
-                    <span class="radio-label-sub">1-2 business days</span>
-                  </label>
-                  <span class="radio-price">₱350</span>
-                </div>
-
-                <div class="radio-option">
-                  <input
-                    type="radio"
-                    id="pickup"
-                    name="shipping"
-                    value="pickup"
-                  />
-                  <label for="pickup">
-                    <span class="radio-label-main">Store Pickup</span>
-                    <span class="radio-label-sub">Free pickup at our Manila store</span>
-                  </label>
-                  <span class="radio-price">Free</span>
-                </div>
-              </div>
-            </form>
-          </section>
-
-          <!-- Lab 1 Task 5: Section 4 - Payment Details with radio buttons -->
-          <section class="checkout-section">
-            <h2>Payment Details</h2>
-
-            <form class="payment-form">
-              <div class="payment-method-selection">
-                <h3>Payment Method</h3>
-
+              <div class="shipping-method-form">
                 <div class="radio-options">
                   <div class="radio-option">
                     <input
                       type="radio"
-                      id="credit-card"
-                      name="payment-method"
-                      value="credit-card"
+                      id="standard"
+                      name="shipping"
+                      value="standard"
                       checked
                     />
-                    <label for="credit-card">
-                      <span class="radio-label-main">Credit Card</span>
-                      <span class="radio-label-sub">Visa, Mastercard, American Express</span>
+                    <label for="standard">
+                      <span class="radio-label-main">Standard Shipping</span>
+                      <span class="radio-label-sub">3-5 business days</span>
                     </label>
+                    <span class="radio-price">₱150</span>
                   </div>
 
                   <div class="radio-option">
                     <input
                       type="radio"
-                      id="paypal"
-                      name="payment-method"
-                      value="paypal"
+                      id="express"
+                      name="shipping"
+                      value="express"
                     />
-                    <label for="paypal">
-                      <span class="radio-label-main">PayPal</span>
-                      <span class="radio-label-sub">Pay with your PayPal account</span>
+                    <label for="express">
+                      <span class="radio-label-main">Express Shipping</span>
+                      <span class="radio-label-sub">1-2 business days</span>
                     </label>
+                    <span class="radio-price">₱350</span>
                   </div>
 
                   <div class="radio-option">
                     <input
                       type="radio"
-                      id="gcash"
-                      name="payment-method"
-                      value="gcash"
+                      id="pickup"
+                      name="shipping"
+                      value="pickup"
                     />
-                    <label for="gcash">
-                      <span class="radio-label-main">GCash</span>
-                      <span class="radio-label-sub">Pay using GCash mobile wallet</span>
+                    <label for="pickup">
+                      <span class="radio-label-main">Store Pickup</span>
+                      <span class="radio-label-sub">Free pickup at our Manila store</span>
                     </label>
+                    <span class="radio-price">Free</span>
                   </div>
                 </div>
               </div>
+            </section>
 
-              <div class="credit-card-details">
+            <!-- Lab 1 Task 5: Section 4 - Payment Details with radio buttons -->
+            <section class="checkout-section">
+              <h2>Payment Details</h2>
+
+              <div class="payment-form">
+                <div class="payment-method-selection">
+                  <h3>Payment Method *</h3>
+
+                  <div class="radio-options">
+                    <div class="radio-option">
+                      <input
+                        type="radio"
+                        id="credit-card"
+                        name="payment-method"
+                        value="credit-card"
+                        checked
+                      />
+                      <label for="credit-card">
+                        <span class="radio-label-main">Credit Card</span>
+                        <span class="radio-label-sub">Visa, Mastercard, American Express</span>
+                      </label>
+                    </div>
+
+                    <div class="radio-option">
+                      <input
+                        type="radio"
+                        id="paypal"
+                        name="payment-method"
+                        value="paypal"
+                      />
+                      <label for="paypal">
+                        <span class="radio-label-main">PayPal</span>
+                        <span class="radio-label-sub">Pay with your PayPal account</span>
+                      </label>
+                    </div>
+
+                    <div class="radio-option">
+                      <input
+                        type="radio"
+                        id="gcash"
+                        name="payment-method"
+                        value="gcash"
+                      />
+                      <label for="gcash">
+                        <span class="radio-label-main">GCash</span>
+                        <span class="radio-label-sub">Pay using GCash mobile wallet</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="credit-card-details" id="creditCardDetails">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="card-number">Card Number *</label>
+                      <input
+                        type="text"
+                        id="card-number"
+                        name="card-number"
+                        placeholder="1234 5678 9012 3456"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row form-row-three">
+                    <div class="form-group">
+                      <label for="expiry-month">Expiry Month *</label>
+                      <select id="expiry-month" name="expiry-month">
+                        <option value="">Select</option>
+                        <option value="01">01 - January</option>
+                        <option value="02">02 - February</option>
+                        <option value="03">03 - March</option>
+                        <option value="04">04 - April</option>
+                        <option value="05">05 - May</option>
+                        <option value="06">06 - June</option>
+                        <option value="07">07 - July</option>
+                        <option value="08">08 - August</option>
+                        <option value="09">09 - September</option>
+                        <option value="10">10 - October</option>
+                        <option value="11">11 - November</option>
+                        <option value="12">12 - December</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="expiry-year">Expiry Year *</label>
+                      <select id="expiry-year" name="expiry-year">
+                        <option value="">Select</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cvv">CVV *</label>
+                      <input
+                        type="text"
+                        id="cvv"
+                        name="cvv"
+                        placeholder="123"
+                        maxlength="3"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="card-name">Name on Card *</label>
+                      <input
+                        type="text"
+                        id="card-name"
+                        name="card-name"
+                        placeholder="John Doe"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Lab 1 Task 5: Section 5 - Billing Address -->
+            <section class="checkout-section">
+              <h2>Billing Address</h2>
+
+              <div class="billing-form">
                 <div class="form-row">
-                  <div class="form-group">
-                    <label for="card-number">Card Number</label>
+                  <div class="form-group checkbox-group">
                     <input
-                      type="text"
-                      id="card-number"
-                      name="card-number"
-                      placeholder="1234 5678 9012 3456"
+                      type="checkbox"
+                      id="same-as-shipping"
+                      name="same-as-shipping"
+                      checked
                     />
-                  </div>
-                </div>
-
-                <div class="form-row form-row-three">
-                  <div class="form-group">
-                    <label for="expiry-month">Expiry Month</label>
-                    <select id="expiry-month" name="expiry-month">
-                      <option value="01">01 - January</option>
-                      <option value="02">02 - February</option>
-                      <option value="03">03 - March</option>
-                      <option value="04">04 - April</option>
-                      <option value="05">05 - May</option>
-                      <option value="06">06 - June</option>
-                      <option value="07">07 - July</option>
-                      <option value="08">08 - August</option>
-                      <option value="09">09 - September</option>
-                      <option value="10">10 - October</option>
-                      <option value="11">11 - November</option>
-                      <option value="12">12 - December</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="expiry-year">Expiry Year</label>
-                    <select id="expiry-year" name="expiry-year">
-                      <option value="2026">2026</option>
-                      <option value="2027">2027</option>
-                      <option value="2028">2028</option>
-                      <option value="2029">2029</option>
-                      <option value="2030">2030</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="cvv">CVV</label>
-                    <input
-                      type="text"
-                      id="cvv"
-                      name="cvv"
-                      placeholder="123"
-                      maxlength="3"
-                    />
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="card-name">Name on Card</label>
-                    <input
-                      type="text"
-                      id="card-name"
-                      name="card-name"
-                      placeholder="John Doe"
-                    />
+                    <label for="same-as-shipping">Same as shipping address</label>
                   </div>
                 </div>
               </div>
-            </form>
-          </section>
-
-          <!-- Lab 1 Task 5: Section 5 - Billing Address -->
-          <section class="checkout-section">
-            <h2>Billing Address</h2>
-
-            <form class="billing-form">
-              <div class="form-row">
-                <div class="form-group checkbox-group">
-                  <input
-                    type="checkbox"
-                    id="same-as-shipping"
-                    name="same-as-shipping"
-                    checked
-                  />
-                  <label for="same-as-shipping">Same as shipping address</label>
-                </div>
-              </div>
-            </form>
-          </section>
-        </div>
-
-        <!-- Lab 1 Task 5: Sticky Order Summary Aside -->
-        <aside class="order-summary">
-          <h2>Order Summary</h2>
-
-          <div class="summary-items">
-            <h3>Items (3)</h3>
-
-            <div class="summary-item">
-              <div class="summary-item-details">
-                <span class="summary-item-name">Smart Watch Pro</span>
-                <span class="summary-item-quantity">x1</span>
-              </div>
-              <span class="summary-item-price">₱3,999</span>
-            </div>
-
-            <div class="summary-item">
-              <div class="summary-item-details">
-                <span class="summary-item-name">Wireless Headphones</span>
-                <span class="summary-item-quantity">x2</span>
-              </div>
-              <span class="summary-item-price">₱4,998</span>
-            </div>
-
-            <div class="summary-item">
-              <div class="summary-item-details">
-                <span class="summary-item-name">Bluetooth Speaker</span>
-                <span class="summary-item-quantity">x1</span>
-              </div>
-              <span class="summary-item-price">₱1,899</span>
-            </div>
+            </section>
           </div>
 
-          <div class="summary-divider"></div>
+          <!-- Lab 1 Task 5: Sticky Order Summary Aside -->
+          <aside class="order-summary">
+            <h2>Order Summary</h2>
 
-          <div class="summary-calculations">
-            <div class="summary-row">
-              <span>Subtotal</span>
-              <span>₱10,896</span>
-            </div>
-
-            <div class="summary-row">
-              <span>Shipping</span>
-              <span class="shipping-estimate">Calculated at next step</span>
-            </div>
-
-            <div class="summary-row">
-              <span>Tax</span>
-              <span class="tax-estimate">Calculated at next step</span>
+            <div class="summary-items">
+              <h3>Items (<span class="cart-item-count">0</span>)</h3>
+              <div class="summary-items-container"></div>
             </div>
 
             <div class="summary-divider"></div>
 
-            <div class="summary-row total">
-              <span>Total</span>
-              <span class="total-amount">₱10,896</span>
+            <div class="summary-calculations">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span class="subtotal-amount">₱0</span>
+              </div>
+
+              <div class="summary-row">
+                <span>Shipping</span>
+                <span class="shipping-estimate">Calculated at next step</span>
+              </div>
+
+              <div class="summary-row">
+                <span>Tax</span>
+                <span class="tax-estimate">Calculated at next step</span>
+              </div>
+
+              <div class="summary-divider"></div>
+
+              <div class="summary-row total">
+                <span>Total</span>
+                <span class="total-amount">₱0</span>
+              </div>
+
+              <div class="summary-note">
+                <p>Taxes and shipping calculated at next step</p>
+              </div>
             </div>
 
-            <div class="summary-note">
-              <p>Taxes and shipping calculated at next step</p>
+            <div class="place-order">
+              <button type="submit" class="place-order-btn">Place Order</button>
             </div>
-          </div>
 
-          <div class="place-order">
-            <a href="confirmation.html" class="place-order-btn">Place Order</a>
-          </div>
-
-          <div class="security-badge">
-            <p>🔒 Secure Checkout</p>
-            <p class="security-text">Your information is encrypted and secure</p>
-          </div>
-        </aside>
-      </div>
+            <div class="security-badge">
+              <p>🔒 Secure Checkout</p>
+              <p class="security-text">Your information is encrypted and secure</p>
+            </div>
+          </aside>
+        </div>
+      </form>
     </main>
 
     <footer>
       <p>&copy; 2026 My Online Store. All rights reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
+    <script>
+      // Additional validation logic for credit card fields based on payment method
+      document.addEventListener('DOMContentLoaded', function() {
+        const paymentRadios = document.querySelectorAll('input[name="payment-method"]');
+        const creditCardDetails = document.getElementById('creditCardDetails');
+        const creditCardInputs = creditCardDetails.querySelectorAll('input, select');
+        
+        function toggleCreditCardFields() {
+          const selectedPayment = document.querySelector('input[name="payment-method"]:checked').value;
+          if (selectedPayment === 'credit-card') {
+            creditCardDetails.style.display = 'block';
+            // Make credit card fields required
+            creditCardInputs.forEach(input => {
+              if (input.tagName === 'SELECT') {
+                input.setAttribute('required', 'required');
+              } else if (input.type !== 'checkbox') {
+                input.setAttribute('required', 'required');
+              }
+            });
+          } else {
+            creditCardDetails.style.display = 'none';
+            // Remove required attribute from credit card fields
+            creditCardInputs.forEach(input => {
+              input.removeAttribute('required');
+            });
+          }
+        }
+        
+        paymentRadios.forEach(radio => {
+          radio.addEventListener('change', toggleCreditCardFields);
+        });
+        
+        toggleCreditCardFields();
+      });
+    </script>
   </body>
 </html>
