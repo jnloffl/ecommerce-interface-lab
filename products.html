@@ -277,5 +277,52 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+    // Display user greeting if logged in
+    const currentUser = sessionStorage.getItem('username');
+    const header = document.querySelector('header');
+    
+    if (header) {
+        if (currentUser) {
+            // Create user info div
+            const userDiv = document.createElement('div');
+            userDiv.className = 'user-info';
+            userDiv.innerHTML = `
+                <span>Welcome, ${currentUser}!</span>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            `;
+            userDiv.style.display = 'flex';
+            userDiv.style.alignItems = 'center';
+            userDiv.style.gap = '10px';
+            userDiv.style.marginLeft = 'auto';
+            
+            // Insert into header
+            const iconContainer = document.querySelector('.icon-container');
+            if (iconContainer) {
+                iconContainer.parentNode.insertBefore(userDiv, iconContainer);
+            }
+            
+            // Add logout functionality
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                sessionStorage.clear();
+                window.location.href = 'login.html';
+            });
+        } else {
+            // Show login link for guests
+            const loginLink = document.createElement('a');
+            loginLink.href = 'login.html';
+            loginLink.textContent = 'Login';
+            loginLink.style.marginLeft = 'auto';
+            loginLink.style.color = 'var(--primary-color)';
+            loginLink.style.textDecoration = 'none';
+            
+            const iconContainer = document.querySelector('.icon-container');
+            if (iconContainer) {
+                iconContainer.parentNode.insertBefore(loginLink, iconContainer);
+            }
+        }
+    }
+</script>
   </body>
 </html>

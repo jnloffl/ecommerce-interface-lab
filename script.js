@@ -1,3 +1,74 @@
+// ============================================
+// Authentication Functions (Lab 9)
+// ============================================
+
+const API_BASE = 'http://localhost:8080';
+
+// Register a new user
+async function registerUser(username, password, role) {
+    try {
+        const response = await fetch(`${API_BASE}/api/auth/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password, role })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            return { success: true, message: 'Registration successful! Redirecting to login...' };
+        } else {
+            return { success: false, message: data.error || data.message || 'Registration failed' };
+        }
+    } catch (error) {
+        return { success: false, message: 'Cannot connect to server. Make sure backend is running on port 8080.' };
+    }
+}
+
+// Login user and store credentials
+async function loginUser(username, password) {
+    const encodedCredentials = btoa(`${username}:${password}`);
+    
+    try {
+        const response = await fetch(`${API_BASE}/api/v1/products`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Basic ${encodedCredentials}`
+            }
+        });
+        
+        console.log('Login response status:', response.status);
+        
+        if (response.ok) {
+            sessionStorage.setItem('username', username);
+            sessionStorage.setItem('password', password);
+            return { success: true, message: 'Login successful! Redirecting to products...' };
+        } else if (response.status === 401) {
+            return { success: false, message: 'Invalid username or password' };
+        } else {
+            return { success: false, message: `Login failed: ${response.status}` };
+        }
+    } catch (error) {
+        console.error('Login error:', error);
+        return { success: false, message: 'Cannot connect to server. Make sure backend is running on port 8080.' };
+    }
+}
+// Logout user
+function logoutUser() {
+    sessionStorage.clear();
+    window.location.href = 'login.html';
+}
+
+// Check if user is logged in
+function isLoggedIn() {
+    return sessionStorage.getItem('username') !== null;
+}
+
+// Get current logged-in username
+function getCurrentUsername() {
+    return sessionStorage.getItem('username');
+}
+
 // script.js
 // Laboratory 6 & 8: DOM Scripting + Fetch API Integration
 
@@ -961,4 +1032,104 @@ function createProductCard(product) {
     article.appendChild(button);
     
     return article;
+}
+
+// ============================================
+// Signup Form Handler
+// ============================================
+
+const signupForm = document.getElementById('signupForm');
+if (signupForm) {
+    signupForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const role = document.getElementById('role').value;
+        const messageDiv = document.getElementById('message');
+        
+        // Clear previous message
+        messageDiv.className = 'message';
+        messageDiv.style.display = 'none';
+        
+        // Validate passwords match
+        if (password !== confirmPassword) {
+            messageDiv.textContent = 'Passwords do not match!';
+            messageDiv.className = 'message error';
+            messageDiv.style.display = 'block';
+            return;
+        }
+        
+        // Validate password length
+        if (password.length < 6) {
+            messageDiv.textContent = 'Password must be at least 6 characters!';
+            messageDiv.className = 'message error';
+            messageDiv.style.display = 'block';
+            return;
+        }
+        
+        const result = await registerUser(username, password, role);
+        
+        messageDiv.textContent = result.message;
+        messageDiv.className = `message ${result.success ? 'success' : 'error'}`;
+        messageDiv.style.display = 'block';
+        
+        if (result.success) {
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+        }
+    });
+}
+
+// ============================================
+// Login Form Handler
+// ============================================
+
+const loginForm = document.getElementById('loginForm');
+if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const messageDiv = document.getElementById('message');
+        
+        // Clear previous message
+        messageDiv.className = 'message';
+        messageDiv.style.display = 'none';
+        
+        if (!username || !password) {
+            messageDiv.textContent = 'Please enter username and password!';
+            messageDiv.className = 'message error';
+            messageDiv.style.display = 'block';
+            return;
+        }
+        
+        messageDiv.textContent = 'Verifying credentials...';
+        messageDiv.className = 'message success';
+        messageDiv.style.display = 'block';
+        
+        const result = await loginUser(username, password);
+        
+        messageDiv.textContent = result.message;
+        messageDiv.className = `message ${result.success ? 'success' : 'error'}`;
+        messageDiv.style.display = 'block';
+        
+        if (result.success) {
+            setTimeout(() => {
+                window.location.href = 'products.html';
+            }, 1500);
+        }
+    });
+}
+
+// Pre-fill username on login page if coming from signup
+if (window.location.pathname.includes('login.html')) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username');
+    if (username && document.getElementById('username')) {
+        document.getElementById('username').value = username;
+    }
 }
