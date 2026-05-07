@@ -1,36 +1,5 @@
 // script.js
-// Laboratory 6: DOM Scripting - Dynamic E-commerce Application
-
-// ============================================
-// Task 1: Data Structure - Product Class
-// ============================================
-
-class Product {
-    constructor(id, name, price, image, description = '', category = '') {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.image = image;
-        this.description = description;
-        this.category = category;
-    }
-}
-
-// Product Database - 10+ products for testing
-const products = [
-    new Product(1, 'Smart Watch Pro', 3999, 'images/smartwatch.jpg', 'Track your fitness, heart rate, and receive notifications', 'wearables'),
-    new Product(2, 'Wireless Headphones', 2499, 'images/headphones.jpg', 'High-quality sound with noise cancellation and 20hr battery life', 'audio'),
-    new Product(3, 'Bluetooth Speaker', 1899, 'images/speaker.jpg', 'Portable speaker with deep bass and waterproof design', 'audio'),
-    new Product(4, 'Mechanical Keyboard', 2999, 'images/keyboard.jpg', 'RGB backlit with blue switches for satisfying typing experience', 'accessories'),
-    new Product(5, 'Gaming Mouse', 1899, 'images/mouse.jpg', '16,000 DPI with customizable RGB lighting', 'accessories'),
-    new Product(6, '15" Portable Monitor', 5999, 'images/monitor.jpg', 'USB-C powered, perfect for laptop dual-screen setup', 'electronics'),
-    new Product(7, 'USB-C Hub', 1299, 'images/usbhub.jpg', '7-in-1 multiport adapter with 4K HDMI', 'electronics'),
-    new Product(8, 'Phone Stand', 399, 'images/stand.jpg', 'Adjustable aluminum phone stand', 'accessories'),
-    new Product(9, 'Power Bank', 1499, 'images/powerbank.jpg', '20000mAh fast charging power bank', 'electronics'),
-    new Product(10, 'Smart Light Bulb', 799, 'images/lightbulb.jpg', 'Wi-Fi enabled color-changing smart bulb', 'electronics'),
-    new Product(11, 'Wireless Charger', 899, 'images/charger.jpg', '15W fast wireless charging pad', 'accessories'),
-    new Product(12, 'Fitness Tracker', 2299, 'images/fitness.jpg', 'Activity tracker with heart rate monitor', 'wearables')
-];
+// Laboratory 6 & 8: DOM Scripting + Fetch API Integration
 
 // ============================================
 // Global State Management
@@ -39,28 +8,46 @@ const products = [
 // Cart array - stores cart items with quantity
 let cart = [];
 
-// Load cart from localStorage on page load
-function loadCartFromStorage() {
-    const savedCart = localStorage.getItem('ecommerceCart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
+// Global products array (will be populated from backend)
+let products = [];
+
+// ============================================
+// Fetch Products from Backend API
+// ============================================
+
+async function fetchProductsFromBackend() {
+    try {
+        const response = await fetch('http://localhost:8080/api/v1/products');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const productsFromBackend = await response.json();
+        console.log('Products loaded from backend:', productsFromBackend);
+        
+        // Convert backend data to match the expected Product format
+        products = productsFromBackend.map(p => ({
+            id: p.id,
+            name: p.name,
+            price: p.price,
+            image: 'images/' + (p.imageUrl || 'placeholder.jpg'),
+            description: p.description,
+            category: p.category
+        }));
+        
+        return products;
+        
+    } catch (error) {
+        console.error('Failed to fetch products:', error);
+        // Show error message to user
+        const productGrid = document.querySelector('.products-container');
+        if (productGrid) {
+            productGrid.innerHTML = '<p style="color: red; text-align: center;">Failed to load products. Please make sure the backend server is running on port 8080.</p>';
+        }
+        return [];
     }
 }
-
-// Save cart to localStorage
-function saveCartToStorage() {
-    localStorage.setItem('ecommerceCart', JSON.stringify(cart));
-}
-
-// Current user mock data (Task 5)
-const currentUser = {
-    name: 'John Doe',
-    orderHistory: [
-        { id: 'ORD-001', date: 'March 10, 2026', total: 10896, items: ['Smart Watch Pro', 'Wireless Headphones x2', 'Bluetooth Speaker'], status: 'Delivered' },
-        { id: 'ORD-002', date: 'February 25, 2026', total: 4898, items: ['Mechanical Keyboard', 'Gaming Mouse'], status: 'Delivered' },
-        { id: 'ORD-003', date: 'March 12, 2026', total: 5999, items: ['15" Portable Monitor'], status: 'In Transit' }
-    ]
-};
 
 // ============================================
 // Helper Functions
@@ -80,12 +67,24 @@ function findProductById(id) {
 // Task 2: Dynamic Product Rendering (products.html)
 // ============================================
 
-function renderProducts() {
+async function renderProducts() {
     const productGrid = document.querySelector('.products-container');
     if (!productGrid) return;
     
+    // Show loading indicator
+    productGrid.innerHTML = '<p style="text-align: center;">Loading products...</p>';
+    
+    // Fetch products from backend
+    await fetchProductsFromBackend();
+    
     // Clear existing content
     productGrid.innerHTML = '';
+    
+    // Check if no products
+    if (products.length === 0) {
+        productGrid.innerHTML = '<p style="text-align: center;">No products available.</p>';
+        return;
+    }
     
     // Loop through products and create cards
     products.forEach(product => {
@@ -224,7 +223,7 @@ function renderCart() {
     // Clear and rebuild cart list
     cartList.innerHTML = '';
     
-    cart.forEach((item, index) => {
+    cart.forEach((item) => {
         const li = document.createElement('li');
         li.className = 'cart-item';
         li.setAttribute('data-cart-id', item.id);
@@ -328,11 +327,33 @@ function updateCartIcon() {
     }
 }
 
+// Load cart from localStorage on page load
+function loadCartFromStorage() {
+    const savedCart = localStorage.getItem('ecommerceCart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+    }
+}
+
+// Save cart to localStorage
+function saveCartToStorage() {
+    localStorage.setItem('ecommerceCart', JSON.stringify(cart));
+}
+
+// Current user mock data (Task 5)
+const currentUser = {
+    name: 'John Doe',
+    orderHistory: [
+        { id: 'ORD-001', date: 'March 10, 2026', total: 10896, items: ['Smart Watch Pro', 'Wireless Headphones x2', 'Bluetooth Speaker'], status: 'Delivered' },
+        { id: 'ORD-002', date: 'February 25, 2026', total: 4898, items: ['Mechanical Keyboard', 'Gaming Mouse'], status: 'Delivered' },
+        { id: 'ORD-003', date: 'March 12, 2026', total: 5999, items: ['15" Portable Monitor'], status: 'In Transit' }
+    ]
+};
+
 // ============================================
 // Task 4: Form Validation & Submission (checkout.html)
 // ============================================
 
-// Task 4: Form Validation & Submission (checkout.html)
 function initCheckoutForm() {
     const checkoutForm = document.querySelector('.checkout-form');
     if (!checkoutForm) return;
@@ -461,7 +482,6 @@ function initCheckoutForm() {
             if (!isValid) {
                 errorContainer.innerHTML = errors.map(err => `<p class="error-message">⚠️ ${err}</p>`).join('');
                 errorContainer.style.display = 'block';
-                // Scroll to top of form
                 errorContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else {
                 errorContainer.style.display = 'none';
@@ -569,11 +589,16 @@ function animateAddToCart(productId) {
 // Product Detail Page Rendering
 // ============================================
 
-function renderProductDetail() {
+async function renderProductDetail() {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
     
     if (!productId) return;
+    
+    // Fetch products if not already loaded
+    if (products.length === 0) {
+        await fetchProductsFromBackend();
+    }
     
     const product = findProductById(productId);
     if (!product) return;
@@ -592,9 +617,6 @@ function renderProductDetail() {
     
     // Update Add to Cart button
     if (addToCartBtn) {
-        addToCartBtn.setAttribute('data-id', product.id);
-        
-        // Remove existing event listener and add new one
         const newBtn = addToCartBtn.cloneNode(true);
         addToCartBtn.parentNode.replaceChild(newBtn, addToCartBtn);
         newBtn.addEventListener('click', (e) => {
@@ -621,13 +643,6 @@ function updateRelatedProducts(currentProduct) {
     const relatedProducts = products
         .filter(p => p.id !== currentProduct.id && p.category === currentProduct.category)
         .slice(0, 3);
-    
-    if (relatedProducts.length < 3) {
-        const otherProducts = products.filter(p => p.id !== currentProduct.id && p.category !== currentProduct.category);
-        while (relatedProducts.length < 3 && otherProducts.length) {
-            relatedProducts.push(otherProducts.shift());
-        }
-    }
     
     relatedGrid.innerHTML = '';
     relatedProducts.forEach(product => {
@@ -665,12 +680,9 @@ function updateRelatedProducts(currentProduct) {
 function updateCheckoutSummary() {
     const summaryItems = document.querySelector('.summary-items');
     const totalAmount = document.querySelector('.total-amount');
-    const subtotalElement = document.querySelector('.summary-row:first-child span:last-child');
     
     if (!summaryItems) return;
     
-    // Clear and rebuild summary items
-    const itemsContainer = summaryItems.querySelector('.summary-items-container') || summaryItems;
     const originalH3 = summaryItems.querySelector('h3');
     
     // Clear items but keep the h3
@@ -698,10 +710,10 @@ function updateCheckoutSummary() {
     // Update totals
     const total = calculateCartTotal();
     if (totalAmount) totalAmount.textContent = formatPrice(total);
-    if (subtotalElement && subtotalElement.parentElement?.parentElement?.querySelector('.summary-row:first-child')) {
-        const subtotalRow = document.querySelector('.summary-row:first-child span:last-child');
-        if (subtotalRow) subtotalRow.textContent = formatPrice(total);
-    }
+    
+    // Update subtotal in checkout
+    const subtotalRow = document.querySelector('.summary-row:first-child span:last-child');
+    if (subtotalRow) subtotalRow.textContent = formatPrice(total);
 }
 
 // ============================================
@@ -718,8 +730,6 @@ function initEventDelegation() {
             const productId = addButton.getAttribute('data-id');
             if (productId) {
                 addToCart(parseInt(productId));
-                
-                // Show feedback message
                 showToast('Item added to cart!');
             }
         }
@@ -728,7 +738,6 @@ function initEventDelegation() {
 
 // Toast notification helper
 function showToast(message) {
-    // Remove existing toast
     const existingToast = document.querySelector('.toast-notification');
     if (existingToast) existingToast.remove();
     
@@ -764,7 +773,7 @@ function initFilters() {
     const applyFiltersBtn = document.querySelector('.apply-filters');
     if (!applyFiltersBtn) return;
     
-    applyFiltersBtn.addEventListener('click', () => {
+    applyFiltersBtn.addEventListener('click', async () => {
         // Get selected categories
         const selectedCategories = Array.from(document.querySelectorAll('.filter-sidebar input[type="checkbox"]'))
             .filter(cb => cb.checked && cb.name === 'category')
@@ -851,7 +860,7 @@ function initFilters() {
 // Initialize all pages based on current page
 // ============================================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // Load cart from storage
     loadCartFromStorage();
     
@@ -861,14 +870,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize based on page
     switch(currentPage) {
         case 'products.html':
-            renderProducts();
+            await renderProducts();
             initFilters();
             break;
         case 'cart.html':
             renderCart();
             break;
         case 'detail.html':
-            renderProductDetail();
+            await renderProductDetail();
             break;
         case 'checkout.html':
             updateCheckoutSummary();
@@ -878,8 +887,7 @@ document.addEventListener('DOMContentLoaded', () => {
             initAccountPage();
             break;
         case 'landing.html':
-            // Render featured products on landing page
-            renderFeaturedProducts();
+            await renderFeaturedProducts();
             break;
     }
     
@@ -891,9 +899,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Render featured products for landing page
-function renderFeaturedProducts() {
+async function renderFeaturedProducts() {
     const featuredGrid = document.querySelector('#featured-products .products-grid');
     const discountedGrid = document.querySelector('#discounted-products .products-grid');
+    
+    // Fetch products if not already loaded
+    if (products.length === 0) {
+        await fetchProductsFromBackend();
+    }
     
     if (featuredGrid) {
         const featuredProducts = products.slice(0, 3);
@@ -909,7 +922,6 @@ function renderFeaturedProducts() {
         discountedGrid.innerHTML = '';
         discountedProducts.forEach(product => {
             const article = createProductCard(product);
-            // Add discount styling
             const priceElement = article.querySelector('.product-price');
             if (priceElement) {
                 const discountPrice = product.price * 0.7;
@@ -934,6 +946,7 @@ function createProductCard(product) {
     desc.textContent = product.description;
     
     const price = document.createElement('p');
+    price.className = 'product-price';
     price.textContent = formatPrice(product.price);
     
     const button = document.createElement('button');
